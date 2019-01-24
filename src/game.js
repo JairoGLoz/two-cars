@@ -34,14 +34,17 @@ function update(){
 
     // detecting touches
     if (this.input.pointer1.isDown){
-        console.log("Pointer is down");
-        this.add.image(200, 300, 'yellow_car');
+        touchFunction(pointer1.x, pointer1.y, this, 'red_car');
     }
 
     this.input.on('pointerdown', function (pointer) {
 
-        this.add.image(pointer.x, pointer.y, 'yellow_car');
+        touchFunction(pointer.x, pointer.y, this, 'yellow_car');
 
     }, this);
 
+}
+
+function touchFunction(x, y, context, car){
+    context.add.image(x, y, car);
 }
