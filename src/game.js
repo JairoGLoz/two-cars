@@ -34,7 +34,7 @@ function update(){
 
     // detecting touches
     if (this.input.pointer1.isDown){
-        touchFunction(pointer1.x, pointer1.y, this, 'red_car');
+        touchFunction(300, 200, this, 'red_car');
     }
 
     this.input.on('pointerdown', function (pointer) {
