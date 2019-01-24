@@ -28,6 +28,12 @@ function preload(){
 function create(){
     //this.add.image(400, 300, 'red_car');
     //this.add.image(700, 300, 'yellow_car');
+
+    this.input.on('pointerdown', function (pointer) {
+
+        touchFunction(pointer.x, pointer.y, this, 'yellow_car');
+
+    }, this);
 }
 
 function update(){
@@ -37,14 +43,9 @@ function update(){
     //     touchFunction(300, 200, this, 'red_car');
     // }
 
-    this.input.on('pointerdown', function (pointer) {
-
-        touchFunction(pointer.x, pointer.y, this, 'yellow_car');
-
-    }, this);
-
 }
 
 function touchFunction(x, y, context, car){
+    console.log("car added")
     context.add.image(x, y, car);
 }
