@@ -35,6 +35,7 @@ function update(){
     // detecting touches
     if (this.input.pointer1.isDown){
         console.log("Pointer is down");
+        this.add.image(200, 300, 'yellow_car');
     }
 
 }
