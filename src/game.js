@@ -33,9 +33,9 @@ function create(){
 function update(){
 
     // detecting touches
-    if (this.input.pointer1.isDown){
-        touchFunction(300, 200, this, 'red_car');
-    }
+    // if (this.input.pointer1.isDown){
+    //     touchFunction(300, 200, this, 'red_car');
+    // }
 
     this.input.on('pointerdown', function (pointer) {
 
