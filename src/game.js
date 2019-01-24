@@ -26,8 +26,8 @@ function preload(){
 }
 
 function create(){
-    this.add.image(400, 300, 'red_car');
-    this.add.image(700, 300, 'yellow_car');
+    //this.add.image(400, 300, 'red_car');
+    //this.add.image(700, 300, 'yellow_car');
 }
 
 function update(){
