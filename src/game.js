@@ -38,4 +38,10 @@ function update(){
         this.add.image(200, 300, 'yellow_car');
     }
 
+    this.input.on('pointerdown', function (pointer) {
+
+        this.add.image(pointer.x, pointer.y, 'yellow_car');
+
+    }, this);
+
 }
