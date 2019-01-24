@@ -5,7 +5,7 @@ var config = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 300 },
+            gravity: { y: 0 },
             debug: false
         }
     },
@@ -19,13 +19,17 @@ var config = {
 var game = new Phaser.Game(config);
 
 function preload(){
-    console.log("Inside preload");
+
+    // load car assets
+    this.load.image('red_car', 'assets/sprites/red_car.png');
+    this.load.image('yellow_car', 'assets/sprites/yellow_car.png');
 }
 
 function create(){
-    console.log("Inside create");
+    this.add.image(400, 300, 'red_car');
+    this.add.image(700, 300, 'yellow_car');
 }
 
 function update(){
-    console.log("Inside update");
+
 }
