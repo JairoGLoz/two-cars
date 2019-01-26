@@ -46,6 +46,13 @@ function update(){
 }
 
 function touchFunction(x, y, context, car){
-    console.log("car added")
+
+    if (x >=  ( game.canvas.width / 2 ) ){
+        // touch on right side of the game area
+        console.log("right");
+    }else{
+        // touch on left side of game area
+        console.log("left");
+    }
     context.add.image(x, y, car);
 }
