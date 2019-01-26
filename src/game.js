@@ -18,16 +18,32 @@ var config = {
 
 var game = new Phaser.Game(config);
 
+var left_car;
+var right_car;
+
+var left_left;
+var left_right;
+var right_left;
+var right_right;
+
 function preload(){
 
     // load car assets
-    this.load.image('red_car', 'assets/sprites/red_car.png');
-    this.load.image('yellow_car', 'assets/sprites/yellow_car.png');
+    this.load.image('left_car', 'assets/sprites/red_car.png');
+    this.load.image('right_car', 'assets/sprites/yellow_car.png');
 }
 
 function create(){
-    //this.add.image(400, 300, 'red_car');
-    //this.add.image(700, 300, 'yellow_car');
+    left_left = game.canvas.width / 8 * 1;
+    left_right = game.canvas.width / 8 * 3;
+    right_left = game.canvas.width / 8 * 5;
+    right_right = game.canvas.width / 8 * 7;
+
+    var initial_y = game.canvas.height - 40; // todo: change that 40 for something more generic
+
+    // add cars
+    left_car = this.physics.add.sprite(left_left, initial_y, 'left_car');
+    right_car = this.physics.add.sprite(right_left,initial_y, 'right_car');
 
     this.input.on('pointerdown', function (pointer) {
 
@@ -38,21 +54,35 @@ function create(){
 
 function update(){
 
-    // detecting touches
-    // if (this.input.pointer1.isDown){
-    //     touchFunction(300, 200, this, 'red_car');
-    // }
-
 }
 
 function touchFunction(x, y, context, car){
 
     if (x >=  ( game.canvas.width / 2 ) ){
         // touch on right side of the game area
-        console.log("right");
+        toggleCarPosition('right');
     }else{
         // touch on left side of game area
-        console.log("left");
+        toggleCarPosition('left');
     }
-    context.add.image(x, y, car);
-}
+}// end of touchFunction
+
+function toggleCarPosition(car){
+    if(car === 'right'){
+
+        if (right_car.x === right_left){
+            right_car.x = right_right;
+        }else{
+            right_car.x = right_left;
+        }
+
+    }else if(car === 'left'){
+
+        if (left_car.x === left_left){
+            left_car.x = left_right;
+        }else{
+            left_car.x = left_left;
+        }
+
+    }
+}// end of toggleCarPosition
