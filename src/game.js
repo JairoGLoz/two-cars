@@ -55,19 +55,38 @@ function resizeGameToRatio(desiredRatio){
     }
 }// end of resizeGameToRatio
 
+/**
+ * Scales a sprite given a certain new width and preserves its original aspect ratio
+ * @param spriteToScale
+ * @param spriteNewWidth
+ */
+function scaleSprite(spriteToScale, spriteNewWidth){
+
+    var spriteAspectRatio = spriteNewWidth / spriteToScale.width;
+    spriteToScale.setDisplaySize(spriteNewWidth, spriteToScale.height * spriteAspectRatio);
+
+}// end of scaleCar
+
 function create(){
     resizeGameToRatio(gameAspectRatio);
-    
+
     left_left = game.canvas.width / 8 * 1;
     left_right = game.canvas.width / 8 * 3;
     right_left = game.canvas.width / 8 * 5;
     right_right = game.canvas.width / 8 * 7;
 
-    var initial_y = game.canvas.height - 40; // todo: change that 40 for something more generic
+    var initial_y = game.canvas.height - 70; // todo: change that 40 for something more generic
 
     // add cars
     left_car = this.physics.add.sprite(left_left, initial_y, 'left_car');
     right_car = this.physics.add.sprite(right_left,initial_y, 'right_car');
+
+    /**
+     * Scale cars according to new canvas width
+     */
+    var cars_new_width = game.canvas.width / 10;
+    scaleSprite(left_car, cars_new_width);
+    scaleSprite(right_car, cars_new_width);
 
     this.input.on('pointerdown', function (pointer) {
 
