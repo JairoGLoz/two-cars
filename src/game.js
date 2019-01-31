@@ -1,7 +1,7 @@
 var config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: window.innerWidth,
+    height: window.innerHeight,
     physics: {
         default: 'arcade',
         arcade: {
@@ -18,6 +18,8 @@ var config = {
 
 var game = new Phaser.Game(config);
 
+var gameAspectRatio = 1.78;
+
 var left_car;
 var right_car;
 
@@ -33,7 +35,29 @@ function preload(){
     this.load.image('right_car', 'assets/sprites/yellow_car.png');
 }
 
+/**
+ * Resizes the game area to the desired ratio
+ * @param desiredRatio
+ */
+function resizeGameToRatio(desiredRatio){
+    if (window.innerHeight >= window.innerWidth){
+        // width must be that of window
+        var gameWidth = window.innerWidth;
+        var gameHeight = gameWidth * 1.78;
+
+        game.resize(gameWidth, gameHeight);
+    }else{
+        // height must be that of window
+        var gameHeight = window.innerHeight;
+        var gameWidth = gameHeight / 1.78;
+
+        game.resize(gameWidth, gameHeight);
+    }
+}// end of resizeGameToRatio
+
 function create(){
+    resizeGameToRatio(gameAspectRatio);
+    
     left_left = game.canvas.width / 8 * 1;
     left_right = game.canvas.width / 8 * 3;
     right_left = game.canvas.width / 8 * 5;
